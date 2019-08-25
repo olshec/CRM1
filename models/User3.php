@@ -7,17 +7,18 @@ use Yii;
 /**
  * This is the model class for table "User".
  *
- * @property int $iduser
+ * @property int $id
  * @property string $login
  * @property string $email
  * @property string $password
  * @property int $isAdmin
  * @property resource $photo
- * @property string $authKey
- * @property string $username
+ * @property string $name
  */
 class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
 {
+    public $authKey;
+    public $username;
     /**
      * {@inheritdoc}
      */
@@ -32,10 +33,10 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['login', 'email', 'password', 'isAdmin'], 'required'],
+            [['login', 'email', 'password', 'isAdmin', 'name'], 'required'],
             [['isAdmin'], 'integer'],
             [['photo'], 'string'],
-            [['login', 'email', 'password', 'authKey', 'username'], 'string', 'max' => 45],
+            [['login', 'email', 'password', 'name'], 'string', 'max' => 45],
             [['login'], 'unique'],
         ];
     }
@@ -46,19 +47,16 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
     public function attributeLabels()
     {
         return [
-            'iduser' => 'Iduser',
+            'id' => 'ID',
             'login' => 'Login',
             'email' => 'Email',
             'password' => 'Password',
             'isAdmin' => 'Is Admin',
             'photo' => 'Photo',
-            'authKey' => 'Auth Key',
-            'username' => 'Username',
+            'name' => 'Name',
         ];
     }
 
-
-      
 
 
     public static function findByUsername($username)
@@ -77,9 +75,9 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
         return $this->password === $password;
     }
 
-    public static function findIdentity($iduser)
+    public static function findIdentity($id)
     {
-         $user = User::findOne($iduser);
+         $user = User::findOne($id);
          return $user;
         //return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
     }
@@ -89,7 +87,7 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
      */
     public function getId()
     {
-        return $this->iduser;
+        return $this->id;
     }
 
     /**
@@ -118,6 +116,5 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
         //throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
 
     }
-
 
 }
