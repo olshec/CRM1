@@ -32,19 +32,19 @@ $this->title = 'My Yii Application';
             
             <div class="col-lg-4">
                 <h2>Deliveries</h2>
-                    <?= Html::a('distributer', ['/distributer'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <?= Html::a('Distributer', ['/distributer'],  ['class' => ['btn', 'btn-primary']] ) ?>
                     <br><br>
-                    <?= Html::a('customer', ['/customers'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <?= Html::a('Customer', ['/customers'],  ['class' => ['btn', 'btn-primary']] ) ?>
                     <br><br>
-                    <?= Html::a('order', ['/order'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <?= Html::a('Order', ['/order'],  ['class' => ['btn', 'btn-primary']] ) ?>
             </div>
             
             
             <div class="col-lg-4">
                 <h2>Details</h2>
-               		<?= Html::a('detail', ['/detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
+               		<?= Html::a('Detail', ['/detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
                     <br><br>
-                    <?= Html::a('type detail', ['/type-detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <?= Html::a('Type of detail', ['/type-detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
                     <br><br>
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
