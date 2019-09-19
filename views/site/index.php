@@ -2,6 +2,9 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Html;
+use yii\helpers\Url;
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
@@ -18,32 +21,31 @@ $this->title = 'My Yii Application';
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
+                <h2>Location</h2>
+                    <?= Html::a('City', ['/city'],  ['class' => ['btn', 'btn-primary']]) ?>
+                    <br><br>
+                    <?= Html::a('Country', ['/country'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <br><br>
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
             </div>
+            
+            
             <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <h2>Deliveries</h2>
+                    <?= Html::a('distributer', ['/distributer'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <br><br>
+                    <?= Html::a('customer', ['/customers'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <br><br>
+                    <?= Html::a('order', ['/order'],  ['class' => ['btn', 'btn-primary']] ) ?>
             </div>
+            
+            
             <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <h2>Details</h2>
+               		<?= Html::a('detail', ['/detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <br><br>
+                    <?= Html::a('type detail', ['/type-detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <br><br>
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
@@ -51,3 +53,5 @@ $this->title = 'My Yii Application';
 
     </div>
 </div>
+
+

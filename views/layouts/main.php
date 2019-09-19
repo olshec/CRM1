@@ -9,8 +9,11 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-
+//use yii\bootstrap\Widget;
+use yii\bootstrap\ButtonDropdown;
 AppAsset::register($this);
+
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -41,6 +44,7 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
+
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -55,8 +59,12 @@ AppAsset::register($this);
             )
         ],
     ]);
+    
     NavBar::end();
     ?>
+    
+
+
 
     <div class="container">
         <?= Breadcrumbs::widget([
@@ -67,6 +75,18 @@ AppAsset::register($this);
     </div>
 </div>
 
+<!-- <div class="dropdown"> -->
+<!--     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Label <b class="caret"></b></a> -->
+    <?php
+//         echo Dropdown::widget([
+//             'items' => [
+//                 ['label' => 'DropdownA', 'url' => '/'],
+//                 ['label' => 'DropdownB', 'url' => '#'],
+//             ],
+//         ]);
+//     ?>
+<!-- </div> -->
+
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
@@ -76,6 +96,17 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
+
+
+<script>
+jQuery(function($){
+	
+	$('.btn-primary').css('width','150px');
+
+	console.log('Click count:'+ $('.btn-primary').css("width") );
+});
+</script>
+
 </body>
 </html>
 <?php $this->endPage() ?>
