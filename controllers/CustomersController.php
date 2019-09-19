@@ -7,6 +7,7 @@ use app\models\Customers;
 use app\models\CustomersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
 /**
@@ -20,6 +21,22 @@ class CustomersController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['view', 'update', 'delete', 'create'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view', 'update', 'delete', 'create'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -27,6 +44,10 @@ class CustomersController extends Controller
                 ],
             ],
         ];
+
+        
+        
+        
     }
 
     /**
