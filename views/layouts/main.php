@@ -62,10 +62,7 @@ AppAsset::register($this);
     
     NavBar::end();
     ?>
-    
-
-
-
+  
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -75,17 +72,7 @@ AppAsset::register($this);
     </div>
 </div>
 
-<!-- <div class="dropdown"> -->
-<!--     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Label <b class="caret"></b></a> -->
-    <?php
-//         echo Dropdown::widget([
-//             'items' => [
-//                 ['label' => 'DropdownA', 'url' => '/'],
-//                 ['label' => 'DropdownB', 'url' => '#'],
-//             ],
-//         ]);
-//     ?>
-<!-- </div> -->
+
 
 <footer class="footer">
     <div class="container">
