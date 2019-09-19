@@ -5,8 +5,12 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
 $this->title = 'My Yii Application';
 ?>
+
+
+
 <div class="site-index">
 
     <div class="jumbotron">
@@ -29,6 +33,15 @@ $this->title = 'My Yii Application';
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
             </div>
             
+            <div class="col-lg-4">
+                <h2>Details</h2>
+               		<?= Html::a('Detail', ['/detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <br><br>
+                    <?= Html::a('Type of detail', ['/type-detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                    <br><br>
+
+                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            </div>
             
             <div class="col-lg-4">
                 <h2>Deliveries</h2>
@@ -40,15 +53,7 @@ $this->title = 'My Yii Application';
             </div>
             
             
-            <div class="col-lg-4">
-                <h2>Details</h2>
-               		<?= Html::a('Detail', ['/detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
-                    <br><br>
-                    <?= Html::a('Type of detail', ['/type-detail'],  ['class' => ['btn', 'btn-primary']] ) ?>
-                    <br><br>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+            
         </div>
 
     </div>
