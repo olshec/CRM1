@@ -16,7 +16,7 @@ $this->title = 'My Yii Application';
     <div class="jumbotron">
 <!--         <h1>Congratulations!</h1> -->
 
-        <p class="lead">"Исследование алгоритмов разработки автоматизированного рабочего места для формирования проектно-сметной документации архитектурно-строительной компании</p>
+        <p class="lead">Информационная система для формирования проектно-сметной документации архитектурно-строительной компании</p>
 
 <!--         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p> -->
     </div>
