@@ -1,5 +1,6 @@
 <?php
 
+use app\models\TypeDetail;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -18,7 +19,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Distributer_idDistributer')->textInput() ?>
 
-    <?= $form->field($model, 'TypeDetail_idTypeDetail')->textInput() ?>
+    <?= $form->field($model, 'TypeDetail_idTypeDetail')    
+        //->dropDownList($model->getTypeDetails())
+        ->dropDownList($model->getTypeDetails())
+        ->label('Type_Detail') ?>
+    
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

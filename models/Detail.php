@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+
 use Yii;
+use yii\helpers\Html;  
 
 /**
  * This is the model class for table "Detail".
@@ -78,4 +80,15 @@ class Detail extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Order::className(), ['Detail_idDetail' => 'idDetail']);
     }
+
+    public function getTypeDetails()
+    {
+        $td=TypeDetail::find()->all();
+        foreach($td as $rec){
+            $masName[$rec->idTypeDetail]=$rec->name;
+        }
+        return $masName;  // $this->hasMany(Order::className(), ['Detail_idDetail' => 'idDetail']);
+    }
+
+    
 }

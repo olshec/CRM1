@@ -51,4 +51,11 @@ class TypeDetail extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Detail::className(), ['TypeDetail_idTypeDetail' => 'idTypeDetail']);
     }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+
 }
