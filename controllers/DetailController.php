@@ -10,6 +10,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
+use yii\data\ActiveDataProvider ;
+use app\models\TypeDetail;
+
 /**
  * DetailController implements the CRUD actions for Detail model.
  */
@@ -55,8 +58,31 @@ class DetailController extends Controller
     public function actionIndex()
     {
         $searchModel = new DetailSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+       $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+//         $dataProvider= new ActiveDataProvider([
+//             'query' => Detail::find()->all()
+//         ]);
+
+       $models = $dataProvider->getModels();
+//        $rr= $models[1]['TypeDetail_idTypeDetail'];
+//        TypeDetail::find()
+//        ->where(['idTypeDetail'=> $models[1]['TypeDetail_idTypeDetail']])->one();
+       
+       foreach ( $models as $mod){
+           $mod['TypeDetail_idTypeDetail']=(TypeDetail::find()
+                ->where(['idTypeDetail'=> $mod['TypeDetail_idTypeDetail']])->one())->name;
+       }
+       
+       
+//        $form->field($model, 'TypeDetail_idTypeDetail')
+//        ->dropDownList($model->getTypeDetails())
+//        ->label('Type_Detail');
+       
+//        $dataProvider->getModels()[4]['TypeDetail_idTypeDetail']=1000;
+       
+       
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

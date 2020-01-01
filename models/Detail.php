@@ -48,12 +48,15 @@ class Detail extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
+        $a=9;
+        $a+=9;
+        $b=$a+9;
         return [
             'idDetail' => 'Id Detail',
             'name' => 'Name',
             'cost' => 'Cost',
             'Distributer_idDistributer' => 'Distributer Id Distributer',
-            'TypeDetail_idTypeDetail' => 'Type Detail Id Type Detail',
+            'TypeDetail_idTypeDetail' => 'Type_Detail_Id_Type_Detail',
         ];
     }
 
@@ -70,6 +73,10 @@ class Detail extends \yii\db\ActiveRecord
      */
     public function getTypeDetailIdTypeDetail()
     {
+        $a=9;
+        $a+=9;
+        $b=$a+9;
+        //$nameDetail = $this->hasOne(TypeDetail::className(), ['idTypeDetail' => 'TypeDetail_idTypeDetail']);
         return $this->hasOne(TypeDetail::className(), ['idTypeDetail' => 'TypeDetail_idTypeDetail']);
     }
 
@@ -87,7 +94,7 @@ class Detail extends \yii\db\ActiveRecord
         foreach($td as $rec){
             $masName[$rec->idTypeDetail]=$rec->name;
         }
-        return $masName;  // $this->hasMany(Order::className(), ['Detail_idDetail' => 'idDetail']);
+        return $masName;
     }
 
     

@@ -65,6 +65,8 @@ class DetailSearch extends Detail
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
+        
+        //$name=$query->name;
 
         return $dataProvider;
     }

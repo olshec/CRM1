@@ -43,10 +43,7 @@ class TypeDetailController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-        ];
-        
-        
-        
+        ]; 
     }
 
     /**

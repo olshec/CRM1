@@ -18,9 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Detail', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  //echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+    <?= 
+    
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -34,7 +36,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    
+//     $mod=$dataProvider->getModels()[4];
+//     $mod['TypeDetail_idTypeDetail']=1000;
+//     $dataProvider->getModels()[4]['TypeDetail_idTypeDetail']=1000;
+    
+//     print_r($mod['TypeDetail_idTypeDetail']);die();
+//     $dataProvider->getModels();
+//     $dataProvider->getKeys();
+
+    
+    
+    ?>
 
 
 </div>
