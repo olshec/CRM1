@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use app\models\Country;
 
 /**
  * CityController implements the CRUD actions for City model.
@@ -60,6 +61,14 @@ class CityController extends Controller
         $searchModel = new CitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $models = $dataProvider->getModels();
+        
+        foreach ($models as $mod) {
+            $mod['Country_idCountry'] = (Country::find()->where([
+                'idCountry' => $mod['Country_idCountry']
+            ])->one())->name;
+        }
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -74,8 +83,15 @@ class CityController extends Controller
      */
     public function actionView($id)
     {
+        
+        $city = $this->findModel($id);
+        
+        $city->Country_idCountry = (Country::find()->where([
+            'idCountry' => $city->Country_idCountry
+        ])->one())->name;
+        
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $city,
         ]);
     }
 
@@ -112,6 +128,7 @@ class CityController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->idCity]);
         }
+        
 
         return $this->render('update', [
             'model' => $model,

@@ -48,10 +48,10 @@ class City extends \yii\db\ActiveRecord
     {
         return [
             'idCity' => 'Id City',
-            'name' => 'Name',
-            'countPeople' => 'Count People',
-            'square' => 'Square',
-            'Country_idCountry' => 'Country Id Country',
+            'name' => 'Название',
+            'countPeople' => 'Население, млн',
+            'square' => 'Площадь',
+            'Country_idCountry' => 'Страна',
         ];
     }
 
@@ -78,4 +78,15 @@ class City extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Distributer::className(), ['City_idCity' => 'idCity']);
     }
+    
+    public function getCountries()
+    {
+        $td=Country::find()->all();
+        foreach($td as $rec){
+            $masName[$rec->idCountry]=$rec->name;
+        }
+        return $masName;
+    }
+    
+    
 }

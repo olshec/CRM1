@@ -18,7 +18,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'square')->textInput() ?>
 
-    <?= $form->field($model, 'Country_idCountry')->textInput() ?>
+    
+    
+    <?= $form->field($model, 'Country_idCountry')
+        ->dropDownList($model->getCountries())
+        ->label('Страна') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -82,14 +82,14 @@ class DistributerController extends Controller
     public function actionView($id)
     {
         
-        $detail = $this->findModel($id);
+        $distributer = $this->findModel($id);
         
-        $detail->City_idCity = (City::find()->where([
-            'idCity' => $detail->City_idCity
+        $distributer->City_idCity = (City::find()->where([
+            'idCity' => $distributer->City_idCity
         ])->one())->name;
         
         return $this->render('view', [
-            'model' => $detail,
+            'model' => $distributer,
         ]);
     }
 
