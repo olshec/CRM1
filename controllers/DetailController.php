@@ -90,7 +90,7 @@ class DetailController extends Controller
         foreach ($models as $mod) {
             $mod['Distributer_idDistributer'] = (Distributer::find()->where([
                 'idDistributer' => $mod['Distributer_idDistributer']
-            ])->one())->nameCorporation;
+            ])->one())->name;
         }
 
         return $this->render('index', [
@@ -116,7 +116,7 @@ class DetailController extends Controller
 
         $detail->Distributer_idDistributer = (Distributer::find()->where([
             'idDistributer' => $detail->Distributer_idDistributer
-        ])->one())->nameCorporation;
+        ])->one())->name;
 
         return $this->render('view', [
             'model' => $detail

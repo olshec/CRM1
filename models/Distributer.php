@@ -30,9 +30,9 @@ class Distributer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nameCorporation', 'City_idCity'], 'required'],
+            [['name', 'City_idCity'], 'required'],
             [['City_idCity'], 'integer'],
-            [['nameCorporation'], 'string', 'max' => 45],
+            [['name'], 'string', 'max' => 45],
             [['City_idCity'], 'exist', 'skipOnError' => true, 'targetClass' => City::className(), 'targetAttribute' => ['City_idCity' => 'idCity']],
         ];
     }
@@ -44,7 +44,7 @@ class Distributer extends \yii\db\ActiveRecord
     {
         return [
             'idDistributer' => 'Id Distributer',
-            'nameCorporation' => 'Название компании',
+            'name' => 'Название компании',
             'City_idCity' => 'Город',
         ];
     }

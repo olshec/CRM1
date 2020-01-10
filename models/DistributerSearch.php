@@ -18,7 +18,7 @@ class DistributerSearch extends Distributer
     {
         return [
             [['idDistributer', 'City_idCity'], 'integer'],
-            [['nameCorporation'], 'safe'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -62,7 +62,7 @@ class DistributerSearch extends Distributer
             'City_idCity' => $this->City_idCity,
         ]);
 
-        $query->andFilterWhere(['like', 'nameCorporation', $this->nameCorporation]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

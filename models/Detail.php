@@ -70,8 +70,6 @@ class Detail extends \yii\db\ActiveRecord
      */
     public function getTypeDetailIdTypeDetail()
     {
-        
-        
         return $this->hasOne(TypeDetail::className(), ['idTypeDetail' => 'TypeDetail_idTypeDetail']);
     }
 
@@ -96,7 +94,7 @@ class Detail extends \yii\db\ActiveRecord
     {
         $td=Distributer::find()->all();
         foreach($td as $rec){
-            $masName[$rec->idDistributer]=$rec->nameCorporation;
+            $masName[$rec->idDistributer]=$rec->name;
         }
         return $masName;
     }
