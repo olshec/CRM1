@@ -44,8 +44,8 @@ class Distributer extends \yii\db\ActiveRecord
     {
         return [
             'idDistributer' => 'Id Distributer',
-            'nameCorporation' => 'Name Corporation',
-            'City_idCity' => 'City Id City',
+            'nameCorporation' => 'Название компании',
+            'City_idCity' => 'Город',
         ];
     }
 
@@ -64,4 +64,14 @@ class Distributer extends \yii\db\ActiveRecord
     {
         return $this->hasOne(City::className(), ['idCity' => 'City_idCity']);
     }
+    
+    public function getNameCity()
+    {
+        $td=City::find()->all();
+        foreach($td as $rec){
+            $masName[$rec->idCity]=$rec->name;
+        }
+        return $masName;
+    }
+    
 }

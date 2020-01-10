@@ -40,7 +40,7 @@ class TypeDetail extends \yii\db\ActiveRecord
     {
         return [
             'idTypeDetail' => 'Id Type Detail',
-            'name' => 'Name',
+            'name' => 'Название',
         ];
     }
 

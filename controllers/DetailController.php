@@ -58,7 +58,8 @@ class DetailController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new DetailSearch();
+        
+       $searchModel = new DetailSearch();
         
        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

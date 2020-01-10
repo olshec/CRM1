@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use app\models\City;
 
 /**
  * DistributerController implements the CRUD actions for Distributer model.
@@ -57,6 +58,15 @@ class DistributerController extends Controller
         $searchModel = new DistributerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        
+        $models = $dataProvider->getModels();
+        
+        foreach ( $models as $mod){
+            $mod['City_idCity']=(City::find()
+                ->where(['idCity'=> $mod['City_idCity']])->one())->name;
+        }
+        
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

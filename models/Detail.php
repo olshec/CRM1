@@ -62,6 +62,8 @@ class Detail extends \yii\db\ActiveRecord
      */
     public function getDistributerIdDistributer()
     {
+        
+        
         return $this->hasOne(Distributer::className(), ['idDistributer' => 'Distributer_idDistributer']);
     }
 
@@ -70,6 +72,8 @@ class Detail extends \yii\db\ActiveRecord
      */
     public function getTypeDetailIdTypeDetail()
     {
+        
+        
         return $this->hasOne(TypeDetail::className(), ['idTypeDetail' => 'TypeDetail_idTypeDetail']);
     }
 
