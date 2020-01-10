@@ -81,8 +81,15 @@ class DistributerController extends Controller
      */
     public function actionView($id)
     {
+        
+        $detail = $this->findModel($id);
+        
+        $detail->City_idCity = (City::find()->where([
+            'idCity' => $detail->City_idCity
+        ])->one())->name;
+        
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $detail,
         ]);
     }
 
