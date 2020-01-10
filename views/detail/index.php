@@ -7,7 +7,9 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\DetailSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Details';
+$this->title = 'Детали';
+//$this->params['breadcrumbs'] = null;
+
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="detail-index">
@@ -15,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Detail', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать деталь', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php  //echo $this->render('_search', ['model' => $searchModel]); ?>

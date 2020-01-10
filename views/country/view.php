@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Country */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Countries', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Страны', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idCountry',
+            //'idCountry',
             'name',
             'countPeople',
         ],

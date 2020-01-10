@@ -93,6 +93,7 @@ class DetailController extends Controller
             ])->one())->name;
         }
 
+       
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider

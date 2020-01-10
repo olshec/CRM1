@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model app\models\Detail */
 
 $this->title = 'Обновить деталь: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Details', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Детали', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->idDetail]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Обновить';
 ?>
 <div class="detail-update">
 
