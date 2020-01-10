@@ -17,11 +17,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cost')->textInput() ?>
 
-    <?= $form->field($model, 'Distributer_idDistributer')->textInput() ?>
+
+
+    <?= $form->field($model, 'Distributer_idDistributer')
+        ->dropDownList($model->getNameDistributers())
+        ->label('Производитель') ?>
 
     <?= $form->field($model, 'TypeDetail_idTypeDetail')    
         ->dropDownList($model->getTypeDetails())
-        ->label('Type_Detail') ?>
+        ->label('Тип оборудования') ?>
 
 
 

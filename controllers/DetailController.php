@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 
 use yii\data\ActiveDataProvider ;
 use app\models\TypeDetail;
+use app\models\Distributer;
 
 /**
  * DetailController implements the CRUD actions for Detail model.
@@ -61,27 +62,17 @@ class DetailController extends Controller
         
        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-//         $dataProvider= new ActiveDataProvider([
-//             'query' => Detail::find()->all()
-//         ]);
-
        $models = $dataProvider->getModels();
-//        $rr= $models[1]['TypeDetail_idTypeDetail'];
-//        TypeDetail::find()
-//        ->where(['idTypeDetail'=> $models[1]['TypeDetail_idTypeDetail']])->one();
        
        foreach ( $models as $mod){
            $mod['TypeDetail_idTypeDetail']=(TypeDetail::find()
                 ->where(['idTypeDetail'=> $mod['TypeDetail_idTypeDetail']])->one())->name;
        }
        
-       
-//        $form->field($model, 'TypeDetail_idTypeDetail')
-//        ->dropDownList($model->getTypeDetails())
-//        ->label('Type_Detail');
-       
-//        $dataProvider->getModels()[4]['TypeDetail_idTypeDetail']=1000;
-       
+       foreach ( $models as $mod){
+           $mod['Distributer_idDistributer']=(Distributer::find()
+               ->where(['idDistributer'=> $mod['Distributer_idDistributer']])->one())->nameCorporation;
+       }
        
         return $this->render('index', [
             'searchModel' => $searchModel,
