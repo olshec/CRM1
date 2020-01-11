@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TypeDetail */
 
-$this->title = 'Create Type Detail';
-$this->params['breadcrumbs'][] = ['label' => 'Type Details', 'url' => ['index']];
+$this->title = 'Добавить тип деталей';
+$this->params['breadcrumbs'][] = ['label' => 'Тип деталей', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="type-detail-create">

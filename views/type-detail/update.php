@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TypeDetail */
 
-$this->title = 'Update Type Detail: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Type Details', 'url' => ['index']];
+$this->title = 'Обновить тип детали: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Тип деталей', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->idTypeDetail]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Обновить';
 ?>
 <div class="type-detail-update">
 

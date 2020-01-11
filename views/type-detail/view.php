@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\TypeDetail */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Type Details', 'url' => ['index']];
+$this->title = 'Тип детали: '. $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Тип деталей', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idTypeDetail], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idTypeDetail], [
+        <?= Html::a('Обновить', ['update', 'id' => $model->idTypeDetail], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->idTypeDetail], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Вы уверены что хотите удалить эту запись?',
