@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
         ->label('Страна') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('SСохранить', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
