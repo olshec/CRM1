@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Обновить страну: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Страны', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->idCountry]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Обновить';
 ?>
 <div class="country-update">
 

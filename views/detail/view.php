@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $model->name;
         <?= Html::a('Удалить', ['delete', 'id' => $model->idDetail], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Вы уверены что хотите удалить этот эелемент?',
+                'confirm' => 'Вы уверены что хотите удалить эту запись?',
                 'method' => 'post',
             ],
         ]) ?>
