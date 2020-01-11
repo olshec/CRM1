@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 use app\models\TypeDetail;
 use app\models\Distributer;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * DetailController implements the CRUD actions for Detail model.
@@ -75,12 +76,43 @@ class DetailController extends Controller
      */
     public function actionIndex()
     {
+        //get POST params 
+        $params = Yii::$app->request->queryParams;
+        //name string TypeDetail_idTypeDetail in params  convert to integer 
+        $typeDetail = trim($params['DetailSearch']['TypeDetail_idTypeDetail']);
+        if($typeDetail != ''){
+            $idTypeDetail = (TypeDetail::find()->where([
+                'name' => $typeDetail
+            ])->one())->idTypeDetail;
+            $params['DetailSearch']['TypeDetail_idTypeDetail'] = intval($idTypeDetail) ;
+        }
+        
         $searchModel = new DetailSearch();
+        
+        $dataProvider = $searchModel->search($params);
+        
+        //integer key TypeDetail_idTypeDetail in DetailSearch convert to string name 
+        if($typeDetail != ''){
+            $searchIdDetail = $searchModel['TypeDetail_idTypeDetail'];
+            $nameDetail = (TypeDetail::find()->where([
+                'idTypeDetail' => $searchIdDetail
+            ])->one())->name;
+            $searchModel['TypeDetail_idTypeDetail']=$nameDetail;
+        }
 
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        
+        
+        //$searchModel->TypeDetail_idTypeDetail[0];
+        //$er = $searchModel->getErrors();
+        //print_r($er['TypeDetail_idTypeDetail'][0]);
+        
+       // print_r($searchModel);
+        //die(0);
+        
         $models = $dataProvider->getModels();
 
+        
+        
         foreach ($models as $mod) {
             $mod['TypeDetail_idTypeDetail'] = (TypeDetail::find()->where([
                 'idTypeDetail' => $mod['TypeDetail_idTypeDetail']
@@ -92,8 +124,10 @@ class DetailController extends Controller
                 'idDistributer' => $mod['Distributer_idDistributer']
             ])->one())->name;
         }
-
-       
+        
+        
+        
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider
