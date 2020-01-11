@@ -17,8 +17,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cost')->textInput() ?>
 
-
-
     <?= $form->field($model, 'Distributer_idDistributer')
         ->dropDownList($model->getNameDistributers())
         ->label('Производитель') ?>

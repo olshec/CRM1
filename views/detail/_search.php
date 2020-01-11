@@ -23,13 +23,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Distributer_idDistributer') ?>
 
-
-
     <?= $form->field($model, 'TypeDetail_idTypeDetail')  ?>  
    
-
-
-
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>

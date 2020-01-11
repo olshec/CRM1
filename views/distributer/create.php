@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Distributer */
 
-$this->title = 'Create Distributer';
-$this->params['breadcrumbs'][] = ['label' => 'Distributers', 'url' => ['index']];
+$this->title = 'Добавить поставщика';
+$this->params['breadcrumbs'][] = ['label' => 'Поставщики', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="distributer-create">

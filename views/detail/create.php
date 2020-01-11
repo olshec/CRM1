@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Detail */
 
-$this->title = 'Создать деталь';
+$this->title = 'Добавить деталь';
 $this->params['breadcrumbs'][] = ['label' => 'Детали', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

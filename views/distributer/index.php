@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\DistributerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Distributers';
+$this->title = 'Поставщик';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="distributer-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Distributer', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить поставщика', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
