@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use app\models\City;
 
 /**
  * CustomersController implements the CRUD actions for Customers model.
@@ -59,6 +60,14 @@ class CustomersController extends Controller
         $searchModel = new CustomersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $models = $dataProvider->getModels();
+        
+        foreach ($models as $mod) {
+            $mod['City_idCity'] = (City::find()->where([
+                'idCity' => $mod['City_idCity']
+            ])->one())->name;
+        }
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -73,8 +82,14 @@ class CustomersController extends Controller
      */
     public function actionView($id)
     {
+        $customer = $this->findModel($id);
+        
+        $customer->City_idCity = (City::find()->where([
+            'idCity' => $customer->City_idCity
+        ])->one())->name;
+        
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $customer,
         ]);
     }
 

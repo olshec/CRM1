@@ -46,10 +46,10 @@ class Customers extends \yii\db\ActiveRecord
     {
         return [
             'idCustomers' => 'Id Customers',
-            'firstName' => 'First Name',
-            'lastName' => 'Last Name',
-            'idDocument' => 'Id Document',
-            'City_idCity' => 'City Id City',
+            'firstName' => 'Имя',
+            'lastName' => 'Фамилия',
+            'idDocument' => 'Паспорт',
+            'City_idCity' => 'Город',
         ];
     }
 
@@ -68,4 +68,15 @@ class Customers extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Order::className(), ['Customers_idCustomers' => 'idCustomers']);
     }
+    
+    public function getCity()
+    {
+        $td=City::find()->all();
+        foreach($td as $rec){
+            $masName[$rec->idCity]=$rec->name;
+        }
+        return $masName;
+    }
+    
+    
 }

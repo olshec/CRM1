@@ -18,10 +18,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'idDocument')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'City_idCity')->textInput() ?>
+
+    
+    <?= $form->field($model, 'City_idCity')    
+        ->dropDownList($model->getCity())
+        ->label('Город') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
