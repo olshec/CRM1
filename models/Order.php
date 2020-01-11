@@ -47,10 +47,10 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             'idOrder' => 'Id Order',
-            'name' => 'Name',
-            'countDetail' => 'Count Detail',
-            'Customers_idCustomers' => 'Customers Id Customers',
-            'Detail_idDetail' => 'Detail Id Detail',
+            'name' => 'Название',
+            'countDetail' => 'Количество',
+            'Customers_idCustomers' => 'Клиент',
+            'Detail_idDetail' => 'Деталь',
         ];
     }
 
@@ -69,4 +69,25 @@ class Order extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Detail::className(), ['idDetail' => 'Detail_idDetail']);
     }
+    
+    public function getCustomers()
+    {
+        $td=Customers::find()->all();
+        foreach($td as $rec){
+            $masName[$rec->idCustomers]=$rec->firstName . ' ' . $rec->lastName;
+        }
+        return $masName;
+    }
+    
+    
+    public function getDetails()
+    {
+        $td=Detail::find()->all();
+        foreach($td as $rec){
+            $masName[$rec->idDetail]=$rec->name;
+        }
+        return $masName;
+    }
+    
+    
 }

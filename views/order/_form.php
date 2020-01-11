@@ -15,13 +15,17 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'countDetail')->textInput() ?>
-
-    <?= $form->field($model, 'Customers_idCustomers')->textInput() ?>
-
-    <?= $form->field($model, 'Detail_idDetail')->textInput() ?>
+    
+	<?= $form->field($model, 'Customers_idCustomers')    
+        ->dropDownList($model->getCustomers())
+        ->label('Клиенты') ?>
+    
+    <?= $form->field($model, 'Detail_idDetail')    
+        ->dropDownList($model->getDetails())
+        ->label('Детали') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use app\models\Customers;
+use app\models\Detail;
 
 /**
  * OrderController implements the CRUD actions for Order model.
@@ -61,6 +63,22 @@ class OrderController extends Controller
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        
+        $models = $dataProvider->getModels();
+        
+        foreach ($models as $mod) {
+            $cus = (Customers::find()->where([
+                'idCustomers' => $mod['Customers_idCustomers']
+            ])->one());
+            $mod['Customers_idCustomers'] = $cus->firstName . ' ' . $cus->lastName;
+        }
+        
+        foreach ($models as $mod) {
+            $mod['Detail_idDetail'] = (Detail::find()->where([
+                'idDetail' => $mod['Detail_idDetail']
+            ])->one())->name;
+        }
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -75,8 +93,21 @@ class OrderController extends Controller
      */
     public function actionView($id)
     {
+        
+        $order = $this->findModel($id);
+        
+        $cus = (Customers::find()->where([
+            'idCustomers' => $order->Customers_idCustomers
+        ])->one());
+        
+        $order->Customers_idCustomers = $cus->firstName . ' ' . $cus->lastName;
+        
+        $order->Detail_idDetail = (Detail::find()->where([
+            'idDetail' => $order->Detail_idDetail
+        ])->one())->name;
+        
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $order,
         ]);
     }
 
