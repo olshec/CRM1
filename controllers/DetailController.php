@@ -12,6 +12,7 @@ use yii\data\ActiveDataProvider;
 use app\models\TypeDetail;
 use app\models\Distributer;
 use phpDocumentor\Reflection\Types\Integer;
+use phpDocumentor\Reflection\Types\Null_;
 
 /**
  * DetailController implements the CRUD actions for Detail model.
@@ -82,10 +83,40 @@ class DetailController extends Controller
         if (! empty($params)) {
             $typeDetail = trim($params['DetailSearch']['TypeDetail_idTypeDetail']);
             if ($typeDetail != '') {
-                $idTypeDetail = (TypeDetail::find()->where([
+                $itemTypeDetail = (TypeDetail::find()->where([
                     'name' => $typeDetail
-                ])->one())->idTypeDetail;
-                $params['DetailSearch']['TypeDetail_idTypeDetail'] = intval($idTypeDetail);
+                ])->one());
+                if($itemTypeDetail!=null){
+                    $idTypeDetail=$itemTypeDetail->idTypeDetail;
+                    $params['DetailSearch']['TypeDetail_idTypeDetail'] = intval($idTypeDetail);
+                 }
+//                  else {
+//                     $searchModel = new DetailSearch();
+                    
+//                     $dataProvider = $searchModel->search(null);
+                    
+//                     $models = $dataProvider->getModels();
+
+//                     //print_r( $models);
+//                     //die();
+                    
+//                     foreach ($models as $mod) {
+//                         $mod['TypeDetail_idTypeDetail'] = (TypeDetail::find()->where([
+//                             'idTypeDetail' => $mod['TypeDetail_idTypeDetail']
+//                         ])->one())->name;
+//                     }
+                    
+//                     foreach ($models as $mod) {
+//                         $mod['Distributer_idDistributer'] = (Distributer::find()->where([
+//                             'idDistributer' => $mod['Distributer_idDistributer']
+//                         ])->one())->name;
+//                     }
+                    
+//                     return $this->render('index', [
+//                         'searchModel' => $searchModel,
+//                         'dataProvider' => $dataProvider
+//                     ]);
+//                 }
             }
 
             $distributer = trim($params['DetailSearch']['Distributer_idDistributer']);
@@ -96,17 +127,20 @@ class DetailController extends Controller
                 $params['DetailSearch']['Distributer_idDistributer'] = intval($idDistributer);
             }
         }
+        
 
         $searchModel = new DetailSearch();
 
         $dataProvider = $searchModel->search($params);
         if (! empty($params)) {
             // integer key TypeDetail_idTypeDetail in DetailSearch convert to string name
-            if ($typeDetail != '') {
+            if ($typeDetail != '' and $itemTypeDetail != null) {
+                
                 $searchIdDetail = $searchModel['TypeDetail_idTypeDetail'];
                 $nameDetail = (TypeDetail::find()->where([
                     'idTypeDetail' => $searchIdDetail
                 ])->one())->name;
+                
                 $searchModel['TypeDetail_idTypeDetail'] = $nameDetail;
             }
             
@@ -118,12 +152,16 @@ class DetailController extends Controller
                 $searchModel['Distributer_idDistributer'] = $nameDistributer;
             }
         }
+        
+       // $searchModel->TypeDetail_idTypeDetail='';
+        
         // $searchModel->TypeDetail_idTypeDetail[0];
-        // $er = $searchModel->getErrors();
-        // print_r($er['TypeDetail_idTypeDetail'][0]);
+       // $searchModel->addError('cost','zzzz');
+      //   $er = $searchModel->getErrors();
+      //   print_r($er);
 
         // print_r($searchModel);
-        // die(0);
+       //  die(0);
 
         $models = $dataProvider->getModels();
 
