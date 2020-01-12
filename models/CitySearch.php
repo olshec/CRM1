@@ -17,7 +17,8 @@ class CitySearch extends City
     public function rules()
     {
         return [
-            [['idCity', 'countPeople', 'Country_idCountry'], 'integer'],
+            [['idCity', 'countPeople'], 'integer'],
+            [['Country_idCountry'], 'string'],
             [['name'], 'safe'],
             [['square'], 'number'],
         ];
@@ -62,8 +63,25 @@ class CitySearch extends City
             'idCity' => $this->idCity,
             'countPeople' => $this->countPeople,
             'square' => $this->square,
-            'Country_idCountry' => $this->Country_idCountry,
+            //'Country_idCountry' => $this->Country_idCountry,
         ]);
+        
+        
+        $nameCountry = trim($params['CitySearch']['Country_idCountry']);
+        
+        $country = (Country::find()->where([
+            'name' => $nameCountry
+        ])->one());
+        
+        if($country  !=null)
+        {
+            $idCountry = $country ->idCountry;
+            $query->andFilterWhere(['Country_idCountry' => $idCountry]);
+            
+        }else if($nameCountry!=''){
+            $query->andFilterWhere(['Country_idCountry' => -1]);
+        }
+        
 
         $query->andFilterWhere(['like', 'name', $this->name]);
 

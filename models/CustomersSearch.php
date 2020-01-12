@@ -17,7 +17,8 @@ class CustomersSearch extends Customers
     public function rules()
     {
         return [
-            [['idCustomers', 'City_idCity'], 'integer'],
+            [['idCustomers'], 'integer'],
+            [['City_idCity'], 'string'],
             [['firstName', 'lastName', 'idDocument'], 'safe'],
         ];
     }
@@ -59,8 +60,24 @@ class CustomersSearch extends Customers
         // grid filtering conditions
         $query->andFilterWhere([
             'idCustomers' => $this->idCustomers,
-            'City_idCity' => $this->City_idCity,
+            //'City_idCity' => $this->City_idCity,
         ]);
+        
+        //find city name
+        $nameCity= trim($params['CustomersSearch']['City_idCity']);
+        
+        $city = (City::find()->where([
+            'name' => $nameCity
+        ])->one());
+        
+        if($city !=null)
+        {
+            $idCity = $city->idCity;
+            $query->andFilterWhere(['City_idCity' => $idCity]);
+            
+        }else if($nameCity != ''){
+            $query->andFilterWhere(['City_idCity' => -1]);
+        }
 
         $query->andFilterWhere(['like', 'firstName', $this->firstName])
             ->andFilterWhere(['like', 'lastName', $this->lastName])

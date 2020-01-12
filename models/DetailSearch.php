@@ -66,7 +66,8 @@ class DetailSearch extends Detail
             //'TypeDetail_idTypeDetail' => $this->TypeDetail_idTypeDetail,
         ]);
 
-        $nameTypeDetail = $params['DetailSearch']['TypeDetail_idTypeDetail'];
+        //find type of detail
+        $nameTypeDetail = trim($params['DetailSearch']['TypeDetail_idTypeDetail']);
         
         $typeDetail = (TypeDetail::find()->where([
             'name' => $nameTypeDetail
@@ -81,7 +82,9 @@ class DetailSearch extends Detail
             $query->andFilterWhere(['TypeDetail_idTypeDetail' => -1]);
         }
         
-        $nameDistributer = $params['DetailSearch']['Distributer_idDistributer'];
+        
+        //fint distributer name
+        $nameDistributer = trim($params['DetailSearch']['Distributer_idDistributer']);
         
         $distributer = (Distributer::find()->where([
             'name' => $nameDistributer
@@ -97,8 +100,6 @@ class DetailSearch extends Detail
         }
         
         $query->andFilterWhere(['like', 'name', $this->name]);
-        
-        //$name=$query->name;
 
         return $dataProvider;
     }
