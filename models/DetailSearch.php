@@ -17,7 +17,9 @@ class DetailSearch extends Detail
     public function rules()
     {
         return [
-            [['idDetail', 'cost', 'Distributer_idDistributer', 'TypeDetail_idTypeDetail'], 'integer'],
+            //[['idDetail', 'cost', 'Distributer_idDistributer', 'TypeDetail_idTypeDetail'], 'integer'],
+            [['idDetail', 'cost', ], 'integer'],
+            [['Distributer_idDistributer', 'TypeDetail_idTypeDetail' ], 'string'],
             [['name'], 'safe'],
         ];
     }
@@ -60,10 +62,35 @@ class DetailSearch extends Detail
         $query->andFilterWhere([
             'idDetail' => $this->idDetail,
             'cost' => $this->cost,
-            'Distributer_idDistributer' => $this->Distributer_idDistributer,
-            'TypeDetail_idTypeDetail' => $this->TypeDetail_idTypeDetail,
+            //'Distributer_idDistributer' => $this->Distributer_idDistributer,
+            //'TypeDetail_idTypeDetail' => $this->TypeDetail_idTypeDetail,
         ]);
 
+        $nameTypeDetail = $params['DetailSearch']['TypeDetail_idTypeDetail'];
+        
+        $typeDetail = (TypeDetail::find()->where([
+            'name' => $nameTypeDetail
+        ])->one());
+        
+        if($typeDetail !=null)
+        {
+            $idTypeDetail = $typeDetail->idTypeDetail;
+            $query->andFilterWhere(['TypeDetail_idTypeDetail' => $idTypeDetail]);
+        }
+
+        
+        $nameDistributer = $params['DetailSearch']['Distributer_idDistributer'];
+        
+        $distributer = (Distributer::find()->where([
+            'name' => $nameDistributer
+        ])->one());
+        
+        if($distributer !=null)
+        {
+            $idDistributer = $distributer->idDistributer;
+            $query->andFilterWhere(['Distributer_idDistributer' => $idDistributer]);
+        }
+        
         $query->andFilterWhere(['like', 'name', $this->name]);
         
         //$name=$query->name;
