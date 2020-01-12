@@ -66,38 +66,47 @@ class DetailSearch extends Detail
             //'TypeDetail_idTypeDetail' => $this->TypeDetail_idTypeDetail,
         ]);
 
-        //find type of detail
-        $nameTypeDetail = trim($params['DetailSearch']['TypeDetail_idTypeDetail']);
         
-        $typeDetail = (TypeDetail::find()->where([
-            'name' => $nameTypeDetail
-        ])->one());
-        
-        if($typeDetail !=null)
-        {
-            $idTypeDetail = $typeDetail->idTypeDetail;
-            $query->andFilterWhere(['TypeDetail_idTypeDetail' => $idTypeDetail]);
+        if(isset($params['DetailSearch'])){
+            //find type of detail
+            $nameTypeDetail = trim($params['DetailSearch']['TypeDetail_idTypeDetail']);
             
-        }else if($nameTypeDetail!=''){
-            $query->andFilterWhere(['TypeDetail_idTypeDetail' => -1]);
-        }
-        
-        
-        //fint distributer name
-        $nameDistributer = trim($params['DetailSearch']['Distributer_idDistributer']);
-        
-        $distributer = (Distributer::find()->where([
-            'name' => $nameDistributer
-        ])->one());
-        
-        if($distributer != null)
-        {
-            $idDistributer = $distributer->idDistributer;
-            $query->andFilterWhere(['Distributer_idDistributer' => $idDistributer]);
-        }
-        else if($nameDistributer!=''){
+            $typeDetail = (TypeDetail::find()->where([
+                'name' => $nameTypeDetail
+            ])->one());
+            
+            if($typeDetail !=null)
+            {
+                $idTypeDetail = $typeDetail->idTypeDetail;
+                $query->andFilterWhere(['TypeDetail_idTypeDetail' => $idTypeDetail]);
+                
+            }else if($nameTypeDetail!=''){
+                $query->andFilterWhere(['TypeDetail_idTypeDetail' => -1]);
+            }
+            
+            
+            //fint distributer name
+            $nameDistributer = trim($params['DetailSearch']['Distributer_idDistributer']);
+            
+            $distributer = (Distributer::find()->where([
+                'name' => $nameDistributer
+            ])->one());
+            
+            if($distributer != null)
+            {
+                $idDistributer = $distributer->idDistributer;
+                $query->andFilterWhere(['Distributer_idDistributer' => $idDistributer]);
+            }
+            else if($nameDistributer!=''){
                 $query->andFilterWhere(['Distributer_idDistributer' => -1]);
+            }
         }
+        
+        
+        
+        
+        
+        
         
         $query->andFilterWhere(['like', 'name', $this->name]);
 

@@ -64,20 +64,23 @@ class CustomersSearch extends Customers
         ]);
         
         //find city name
-        $nameCity= trim($params['CustomersSearch']['City_idCity']);
-        
-        $city = (City::find()->where([
-            'name' => $nameCity
-        ])->one());
-        
-        if($city !=null)
-        {
-            $idCity = $city->idCity;
-            $query->andFilterWhere(['City_idCity' => $idCity]);
+        if(isset($params['CustomersSearch'])){
+            $nameCity= trim($params['CustomersSearch']['City_idCity']);
             
-        }else if($nameCity != ''){
-            $query->andFilterWhere(['City_idCity' => -1]);
+            $city = (City::find()->where([
+                'name' => $nameCity
+            ])->one());
+            
+            if($city !=null)
+            {
+                $idCity = $city->idCity;
+                $query->andFilterWhere(['City_idCity' => $idCity]);
+                
+            }else if($nameCity != ''){
+                $query->andFilterWhere(['City_idCity' => -1]);
+            }
         }
+        
 
         $query->andFilterWhere(['like', 'firstName', $this->firstName])
             ->andFilterWhere(['like', 'lastName', $this->lastName])

@@ -66,21 +66,25 @@ class CitySearch extends City
             //'Country_idCountry' => $this->Country_idCountry,
         ]);
         
-        
-        $nameCountry = trim($params['CitySearch']['Country_idCountry']);
-        
-        $country = (Country::find()->where([
-            'name' => $nameCountry
-        ])->one());
-        
-        if($country  !=null)
-        {
-            $idCountry = $country ->idCountry;
-            $query->andFilterWhere(['Country_idCountry' => $idCountry]);
+        //find country
+        if(isset($params['CitySearch'])){
             
-        }else if($nameCountry!=''){
-            $query->andFilterWhere(['Country_idCountry' => -1]);
+            $nameCountry = trim($params['CitySearch']['Country_idCountry']);
+            
+            $country = (Country::find()->where([
+                'name' => $nameCountry
+            ])->one());
+            
+            if($country  !=null)
+            {
+                $idCountry = $country ->idCountry;
+                $query->andFilterWhere(['Country_idCountry' => $idCountry]);
+                
+            }else if($nameCountry!=''){
+                $query->andFilterWhere(['Country_idCountry' => -1]);
+            }
         }
+        
         
 
         $query->andFilterWhere(['like', 'name', $this->name]);

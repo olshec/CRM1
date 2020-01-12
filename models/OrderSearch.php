@@ -17,7 +17,8 @@ class OrderSearch extends Order
     public function rules()
     {
         return [
-            [['idOrder', 'countDetail', 'Customers_idCustomers', 'Detail_idDetail'], 'integer'],
+            [['idOrder', 'countDetail'], 'integer'],
+            [['Customers_idCustomers', 'Detail_idDetail'], 'string'],
             [['name'], 'safe'],
         ];
     }
@@ -55,13 +56,58 @@ class OrderSearch extends Order
             // $query->where('0=1');
             return $dataProvider;
         }
+        
+        
+        
+        
+        if(isset($params['OrderSearch'])){
+            //find customer name
+            
+            
+            $firstAndLastNames = trim($params['OrderSearch']['Customers_idCustomers']);
+            $arrayFirstAndLastNames = explode ( ' ', $firstAndLastNames ) ;
+            
+            $firstNameCustomer= $arrayFirstAndLastNames[0];
+            
+            $customers = (Customers::find()->where([
+                'firstName' => $firstNameCustomer
+            ])->one());
+            
+            if($customers !=null)
+            {
+                $idCustomer = $customers->idCustomers;
+                $query->andFilterWhere(['Customers_idCustomers' => $idCustomer]);
+                
+            }else if($firstNameCustomer != ''){
+                $query->andFilterWhere(['Customers_idCustomers' => -1]);
+            }
+            
+            if(isset($arrayFirstAndLastNames[1]))
+            {
+                $lastNameCustomer = $arrayFirstAndLastNames[1];
+                
+                $customers = (Customers::find()->where([
+                    'lastName' => $lastNameCustomer
+                ])->one());
+                
+                if($customers !=null)
+                {
+                    $idCustomer = $customers->idCustomers;
+                    $query->andFilterWhere(['Customers_idCustomers' => $idCustomer]);
+                    
+                }else if($lastNameCustomer!= ''){
+                    $query->andFilterWhere(['Customers_idCustomers' => -1]);
+                }
+            }
+           
+        }
 
         // grid filtering conditions
         $query->andFilterWhere([
             'idOrder' => $this->idOrder,
             'countDetail' => $this->countDetail,
-            'Customers_idCustomers' => $this->Customers_idCustomers,
-            'Detail_idDetail' => $this->Detail_idDetail,
+            //'Customers_idCustomers' => $this->Customers_idCustomers,
+            //'Detail_idDetail' => $this->Detail_idDetail,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

@@ -17,7 +17,8 @@ class DistributerSearch extends Distributer
     public function rules()
     {
         return [
-            [['idDistributer', 'City_idCity'], 'integer'],
+            [['idDistributer'], 'integer'],
+            [['City_idCity'], 'string'],
             [['name'], 'safe'],
         ];
     }
@@ -55,11 +56,29 @@ class DistributerSearch extends Distributer
             // $query->where('0=1');
             return $dataProvider;
         }
+        
+        //find city name
+        if(isset($params['DistributerSearch'])){
+            $nameCity= trim($params['DistributerSearch']['City_idCity']);
+            
+            $city = (City::find()->where([
+                'name' => $nameCity
+            ])->one());
+            
+            if($city !=null)
+            {
+                $idCity = $city->idCity;
+                $query->andFilterWhere(['City_idCity' => $idCity]);
+                
+            }else if($nameCity != ''){
+                $query->andFilterWhere(['City_idCity' => -1]);
+            }
+        }
 
         // grid filtering conditions
         $query->andFilterWhere([
             'idDistributer' => $this->idDistributer,
-            'City_idCity' => $this->City_idCity,
+            //'City_idCity' => $this->City_idCity,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
