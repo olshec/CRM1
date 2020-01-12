@@ -62,8 +62,6 @@ class OrderSearch extends Order
         
         if(isset($params['OrderSearch'])){
             //find customer name
-            
-            
             $firstAndLastNames = trim($params['OrderSearch']['Customers_idCustomers']);
             $arrayFirstAndLastNames = explode ( ' ', $firstAndLastNames ) ;
             
@@ -98,6 +96,22 @@ class OrderSearch extends Order
                 }else if($lastNameCustomer!= ''){
                     $query->andFilterWhere(['Customers_idCustomers' => -1]);
                 }
+            }
+            
+            //find detail name
+            $nameDetail = trim($params['OrderSearch']['Detail_idDetail']);
+            
+            $detail = (Detail::find()->where([
+                'name' => $nameDetail
+            ])->one());
+            
+            if($detail !=null)
+            {
+                $idDetail = $detail ->idDetail;
+                $query->andFilterWhere(['Detail_idDetail' => $idDetail]);
+                
+            }else if($nameDetail!=''){
+                $query->andFilterWhere(['Detail_idDetail' => -1]);
             }
            
         }
