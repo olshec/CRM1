@@ -76,8 +76,10 @@ class DetailSearch extends Detail
         {
             $idTypeDetail = $typeDetail->idTypeDetail;
             $query->andFilterWhere(['TypeDetail_idTypeDetail' => $idTypeDetail]);
+            
+        }else if($nameTypeDetail!=''){
+            $query->andFilterWhere(['TypeDetail_idTypeDetail' => -1]);
         }
-
         
         $nameDistributer = $params['DetailSearch']['Distributer_idDistributer'];
         
@@ -85,10 +87,13 @@ class DetailSearch extends Detail
             'name' => $nameDistributer
         ])->one());
         
-        if($distributer !=null)
+        if($distributer != null)
         {
             $idDistributer = $distributer->idDistributer;
             $query->andFilterWhere(['Distributer_idDistributer' => $idDistributer]);
+        }
+        else if($nameDistributer!=''){
+                $query->andFilterWhere(['Distributer_idDistributer' => -1]);
         }
         
         $query->andFilterWhere(['like', 'name', $this->name]);
