@@ -22,9 +22,6 @@ $this->title = 'Система учета клиентов';
     </div>
 
     <div class="body-content">
-
-<!--         <div class="row"> -->
-<!--             <div class="col-lg-12"> -->
 			<div align="center"> 
                 <h2>Перейти на форму:</h2>
                     <?= Html::a('Города', ['/city'],  ['class' => ['btn', 'btn-primary']]) ?>
@@ -32,9 +29,7 @@ $this->title = 'Система учета клиентов';
                     <?= Html::a('Страны', ['/country'],  ['class' => ['btn', 'btn-primary']] ) ?>
 <!--                     <br><br> -->
                     <?= Html::a('Клиенты', ['/customers'],  ['class' => ['btn', 'btn-primary']] ) ?>
-<!--             </div> -->
-            
-        </div>
+    		</div>
 
     </div>
 </div>
