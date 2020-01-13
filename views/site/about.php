@@ -4,15 +4,13 @@
 
 use yii\helpers\Html;
 
-$this->title = 'About';
+$this->title = 'О системе';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        This is the About page. You may modify the following file to customize its content:
+        Данная система позовляет вести учет клиентов компании ЗАО ТФД "Брок-Инвест-Сервис и К.
     </p>
-
-    <code><?= __FILE__ ?></code>
 </div>
