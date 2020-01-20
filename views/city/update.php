@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\City */
 
-$this->title = 'Обновить город: ' . $model->name;
+$this->title = 'Редактировать: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Города', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->idCity]];
 $this->params['breadcrumbs'][] = 'Обновить';

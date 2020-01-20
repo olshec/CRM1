@@ -23,12 +23,12 @@ $this->title = 'Система учета клиентов';
 
     <div class="body-content">
 			<div align="center"> 
-                <h2>Перейти на форму:</h2>
-                    <?= Html::a('Города', ['/city'],  ['class' => ['btn', 'btn-primary']]) ?>
-<!--                     <br><br> -->
-                    <?= Html::a('Страны', ['/country'],  ['class' => ['btn', 'btn-primary']] ) ?>
-<!--                     <br><br> -->
-                    <?= Html::a('Клиенты', ['/customers'],  ['class' => ['btn', 'btn-primary']] ) ?>
+                <h2>Выберите форму учета:</h2>
+                    <?= Html::a('Города', ['/city'],  ['class' => ['btn', 'btn-success']]) ?>
+                     <br><br> 
+                    <?= Html::a('Страны', ['/country'],  ['class' => ['btn', 'btn-success']] ) ?>
+                    <br><br> 
+                    <?= Html::a('Клиенты', ['/customers'],  ['class' => ['btn', 'btn-success']] ) ?>
     		</div>
 
     </div>

@@ -32,7 +32,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Система учета',//Yii::$app->name,
+        'brandLabel' => 'Система учета клиентов',//Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -42,7 +42,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Домашняя', 'url' => ['/site/index']],
-            ['label' => 'О системе', 'url' => ['/site/about']],
+            ['label' => 'Справка', 'url' => ['/site/about']],
             //['label' => 'Контакты', 'url' => ['/site/contact']],
 
             Yii::$app->user->isGuest ? (
@@ -77,7 +77,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Система учета <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Система учета клиентов <?= date('Y') ?></p>
     </div>
 </footer>
 
@@ -87,9 +87,9 @@ AppAsset::register($this);
 <script>
 jQuery(function($){
 	
-	$('.btn-primary').css('width','150px');
+	$('.btn-success').css('width','400px');
 
-	console.log('Click count:'+ $('.btn-primary').css("width") );
+
 });
 </script>
 
